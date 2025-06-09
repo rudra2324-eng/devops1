@@ -1,0 +1,124 @@
+Feature	                   Gradle	                           Maven	           Ant
+Performance	  Faster (incremental builds, caching)	Slower (rebuilds everything)       Slow (no dependency management)
+Flexibility	    Highly flexible	                Less flexible	                   Very flexible but complex
+Configuration Groovy/Kotlin DSL(domain specific language)XML-based	                   XML-based
+DependencyManagement	Built-in	                  Built-in	                   Requires Ivy or manual management
+Android Support	        Default choice	               Not recommended                     Not recommended
+
+
+
+
+gradle and maven--build automation tool
+step1:1.java -version should have and above version
+it could be install using sudo apt install openjdk-11-jdk
+2.mvn -version 
+it could be install using sudo apt install maven
+step3.mkdir ---
+step4. cd ----
+step5.mvn archetype:generate -DgroupId=com.example -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+step6.go to file what you had given to artifactid change directory to it
+step7.open pom.xml
+ copy below code and paste it from dependencies into pom.xml
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>com.example</groupId>
+<artifactId>MyMavenApp</artifactId>
+<version>1.0-SNAPSHOT</version>
+
+<properties>
+<maven.compiler.source>21</maven.compiler.source>
+<maven.compiler.target>21</maven.compiler.target>
+</properties>
+
+<dependencies>
+
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.13.2</version>
+<scope>test</scope>
+</dependency>
+</dependencies>
+
+<build>
+<plugins>
+
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<version>3.8.1</version>
+<configuration>
+<source>21</source>
+<target>21</target>
+</configuration>
+</plugin>
+
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<version>2.22.2</version>
+</plugin>
+</plugins>
+</build>
+</project>
+
+
+step8.Open a file App.java inside the src/main/java/com/example/ directory.
+After opening the App.java copy the below code and paste it in that file then save it.
+
+
+package com.example;
+
+public class App {
+
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+
+        int result = app.add(2, 3);
+        System.out.println("2 + 3 = " + result);
+
+        System.out.println("Application executed successfully!");
+    }
+}
+
+step9.Open a file AppTest.java inside the src/test/java/com/example/ directory.
+After opening the AppTest.java copy the below code and paste it in that file then save it.
+
+
+
+package com.example;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class AppTest {
+
+    @Test
+    public void testAdd() {
+        App app = new App();
+        int result = app.add(2, 3);
+
+        System.out.println("Running test: 2 + 3 = " + result);
+
+        Assert.assertEquals(5, result);
+    }
+}
+
+step10.Compile the Project
+
+mvn compile   
+mvn test
+mvn package
+for java program running:-  java -cp target/myapp-1.0-SNAPSHOT.jar com.example.App
+value will be added and give you result
+

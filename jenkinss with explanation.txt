@@ -1,0 +1,87 @@
+Jenkins is an open-source automation server used mainly for Continuous Integration (CI) and Continuous Delivery/Deployment (CD) in software development.
+
+ What Does Jenkins Do?
+It automates repetitive tasks like:
+
+.Building your code
+
+.Running tests
+
+.Deploying software
+
+.Sending notifications (e.g., when a build fails)
+
+
+
+How It Works
+
+1.Developers push code to a shared repository (like GitHub)
+
+2.Jenkins detects the change
+
+3.It triggers a pipeline (a series of steps you define)
+
+4.The pipeline can:
+
+.Compile the code
+
+.Run tests
+
+.Package the app
+
+.Deploy it somewhere (like a server or cloud)
+
+
+
+Why Use Jenkins?
+.Free & open-source
+
+.Highly customizable (1,800+ plugins!)
+
+.Works with most tools: Git, Docker, Maven, Gradle, Kubernetes, etc.
+
+.Can automate almost any development task
+
+
+
+%%%%%%%%jenkins installation procedure%%%%
+1.sudo apt update
+2.sudo apt upgrade
+3.For installation of java->sudo apt install openjdk-21or17-jdk
+4.To chech java version ->java -version
+5.Adding jenkins  repoistory-> 1.sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+                               2.sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+6.sudo apt update
+7.for jenkins installation ->sudo apt install jenkins
+8.sudo systemctl start jenkins
+9.sudo systemctl enable jenkins
+10.sudo systemctl status jenkins
+11.sudo apt install ufw (ufw-uncomplicated firewall)
+12.sudo ufw allow 8080
+13.sudo ufw enable
+14.sudo ufw reload
+15.sudo ufw status
+16.open browser and enter http://localhost:8080
+17.sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+18.copy paste terminal string characters into browser password field
+19.create username and password save and continue 
+20.follow screenshots jenkins
+    1. click on new item -> enter item name and select pipeline and press ok
+    2.in configure select pipeline copy paste pipeline prgm apply and save
+    3.build now
+
+
+
+
+
+
+remove jenkins
+ 1 sudo systemctl stop jenkins
+ 2 sudo systemctl disable jenkins
+ 3 sudo apt-get remove --purge jenkins
+ 4 sudo apt-get autoremove
+ 5 sudo rm -rf /var/lib/jenkins
+ 6 sudo rm -rf /etc/jenkins
+ 7 sudo rm -rf /var/log/jenkins
+
+"https://www.cherryservers.com/blog/install-jenkins-ubuntu"

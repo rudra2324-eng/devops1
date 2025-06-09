@@ -1,0 +1,74 @@
+Experiment 9: Introduction to Azure DevOps: Overview of Azure DevOps
+Services, Setting Up an Azure DevOps Account and Project
+Overview of Azure DevOps
+Azure DevOps is a comprehensive suite of cloud-based services designed to support the entire
+software development lifecycle. It provides tools for planning, developing, testing, delivering,
+and monitoring applications. Here are the primary services offered:
+• Azure Repos:
+A set of version control tools that allow you to host Git repositories or use Team
+Foundation Version Control (TFVC). It offers collaboration features such as pull
+requests, branch policies, and code reviews.
+• Azure Pipelines:
+A CI/CD service that helps automate builds, tests, and deployments. It supports multiple
+languages, platforms, and can run on Linux, Windows, or macOS agents.
+• Azure Boards:
+A work tracking system that helps teams manage work items, sprints, backlogs, and
+Kanban boards. It facilitates agile planning and reporting.
+• Azure Test Plans:
+Provides a solution for managing and executing tests, capturing data about defects, and
+tracking quality.
+• Azure Artifacts:
+Allows you to create, host, and share packages (such as Maven, npm, NuGet, and
+Python packages) with your team, integrating package management into your CI/CD
+pipelines.
+These services integrate with each other and with popular third-party tools to create a cohesive
+DevOps ecosystem.
+
+
+Step 1: Sign Up for an Azure DevOps Account
+1. Open Your Web Browser:
+ .Navigate to the Azure DevOps website: https://dev.azure.com
+2. Sign In or Create a Microsoft Account:
+ .If you already have a Microsoft account (such as Outlook, Hotmail, or Office
+365), click “Sign in”.
+ .If you do not have a Microsoft account, click “Create one!” and follow the
+instructions to create a new Microsoft account.
+Step 2: Create an Azure DevOps Organization
+1. click on azure devops organization or search it on search bar
+.click on my azure devops organizations 
+.Click on create a New Organization and click on continue
+. Enter a unique name for your organization (e.g., YourCompanyoryournameDevOps or
+MyPersonalOrg).
+. Select a Region: india. (it is automatically shows india)
+.Enter the characters you see
+.Click “Continue” or “Create
+step 3. Creating an Azure DevOps Project
+1.Configure Your Project:
+ .Project Name: Enter a descriptive name for your project (e.g., HelloDevOps).
+ .Description: Optionally, provide a brief description (e.g., “A sample project to
+demonstrate Azure DevOps services”).
+ .Visibility:
+▪ Choose “Private” if you want to restrict access to your project.
+▪ Choose “Public” if you are okay with the project being accessible to
+anyone.
+ .Advanced Options (Optional): You can choose a version control system (Git
+is the default) and a work item process (Agile, Scrum, or Basic). For most
+beginners, the defaults are recommended.
+ .Click “Create
+Step 4: Explore Your Project Dashboard
+1. Project Overview:
+ .Once your project is created, you will be directed to the project dashboard. Here
+you will see navigation options for:
+▪ Repos: Where your code is stored.
+▪ Pipelines: For build and release automation.
+▪ Boards: For work tracking and agile planning.
+▪ Test Plans: For managing and running tests.
+▪ Artifacts: For hosting packages.
+2. Familiarize Yourself with the Interface:
+ .Click through each section (e.g., Repos, Pipelines, Boards) to get a sense of the
+available features.
+
+
+
+
+

@@ -1,0 +1,24 @@
+step1.gradle install
+sudo apt install gradle
+ mkdir hellogradle
+ cd hellogradle
+step2.gradle init --type java-application
+2: Understanding Build Scripts
+Groovy DSL (default)
+Kotlin DSL (alternative)
+3.compile program using 
+gradle build
+gradle run
+4.have to create your own task
+ copy paste below program inside build.gradle
+after mainclass name
+
+task hello {
+    doLast {
+        println 'Hello, Gradle!'
+    }
+}
+
+
+run the program using
+gradle taskname-->hello

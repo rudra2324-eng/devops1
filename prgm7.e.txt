@@ -1,0 +1,41 @@
+ansible-playbook playbooks/apache-install.yml
+ steps:
+1.sudo apt update
+2.sudo apt upgrade -y
+3.sudo apt install ansible -y
+4.ansible --version
+
+Step 1: Create an Inventory File
+1. Open your text editor to create a file called hosts.ini:
+2. nano hosts.ini
+3. Add the following content to define the local host:
+ [local]
+ localhost ansible_connection=local
+ Explanation:
+▪ [local] is a group name.
+▪ localhost is the target host.
+▪ ansible_connection=local tells Ansible to execute commands on the
+local machine without SSH.
+
+6. Save the file by pressing Ctrl+O then Enter, and exit with Ctrl+X.
+
+Step 2: Create the Playbook File
+1. Open your text editor to create a file called setup.yml:
+2. nano setup.yml
+
+
+- name: Basic Server Setup
+  hosts: local
+  become: true  # Optional: if your tasks need root access
+  tasks:
+    - name: Example task
+      debug:
+        msg: "Hello, this is a basic setup"
+
+Step 3: Execute the Playbook
+In your terminal, run the following command:
+ansible-playbook -i hosts.ini setup.yml
+
+ansible-playbook -i hosts.ini setup.yml --ask-become-pass
+
+

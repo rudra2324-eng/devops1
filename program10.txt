@@ -1,0 +1,143 @@
+Step 1: Installing IntelliJ IDEA
+1. Download IntelliJ Idea from https://www.jetbrains.com/idea/download/?section=linux
+and activate a free trial for 30 days or through the following command. 
+
+ .sudo snap install intellij-idea-community --classic
+2. Open the IDE using the below command in the terminal. 
+ .intellij-idea-community
+to check intalled or not 
+.snap info intellij-idea-community
+3. Java is a pre-requisite for using this IDE
+
+Step 2: Create a new Maven project using the IDE.
+Create a project by clicking on the New Project option, choose an appropriate name and
+select the following features as mentioned in the image (Build system: Maven
+andLanguage: Java and check in create git repository and check advanced settings for groupid and artifact id )
+and click create.
+
+Step 3: Install GIT and configure it --go to terminal which is in intellij idea application follow below instructions
+1. Check whether git is installed using the following command. $ git -v
+2. Install git using $ sudo apt install git
+3.Once git has been installed execute the following commands one by one.
+Configure git using the below commands
+ .git config --global user.name “Your_Name”
+ .git config --global user.email “Your_Email_ID”
+
+ .git init
+ .git add .
+ .git commit -m "First Commit"
+ .git branch -M main
+
+
+Go to https://github.com sign in with your account and create a new private repository
+with the same name as your maven project.
+ 
+1. Now go back to IDE’s terminal and execute the following commands
+ .ssh-keygen -t rsa -b 4096 -C youremail@gmail.com
+(press ENTER for all questions)
+ .cat ~/.ssh/id_rsa.pub (copy the printed SSH key)
+2. Now go to the SSH and GPG section in the GitHub settings option.
+3. Click on the New SSH key button
+4. Choose a suitable name and paste the SSH key into the provided space.
+5.Now get back to the IDE’s terminal and type the following command
+ .git remote add origin git@github.com:heln123-maker/sample.git(ur adding origin by using ur name and ur project)
+ .git remote set-url origin git@github.com:heln123-maker/sample.git(ur name and ur project name)
+
+Now finally run the push commands to push the code to the remote repository from the
+local repository.
+
+ .git push --set-upstream origin main (Type YES for prompted question)
+ .git push
+The code has been successfully pushed to the remote repository.
+you can check it by refreshing ur repository. 
+STEP 4: Create a azure project same as program9
+step 5:
+1.Log into Azure DevOps: Navigate to your Azure DevOps organization. 
+2.Access Personal Access Tokens: Go to User Settings (usually at the top right of the page) and select "Personal access tokens". 
+3.Create a New Token: Click "New Token" to initiate the token creation process. 
+4.Configure the Token:
+.Name: Give your token a descriptive name (e.g., "Agent Registration Token"). 
+.Organization: Select the organization where you want to use the token. 
+.Expiration: Set the token's expiration date (e.g., one year). 
+.Scopes: Choose "Full Access" (recommended) or customize the scopes to grant the necessary
+If you don’t already have a PAT:
+
+Go to Azure DevOps > User settings (top right) > Personal access tokens
+
+Click New Token
+
+Scope: Agent Pools (Read & Manage) at a minimum
+
+Expiration: Up to you
+
+Use this PAT during agent setup when prompted.
+
+STEP 6: Create a pipeline for the created maven repository.
+Click on Pipelines on the left pane of the Azure DevOps website.
+1. Click on the Create Pipeline button.
+2. Choose the GitHub YAML option.
+3. Select the created repository “sample” from the available repositories.
+4. Give permissions if prompted to do so and sign in to your GitHub account if needed.
+5. Choose Maven Pipeline from the given options.
+6.A YAML file is automatically created based on the configuration details found in the
+pom.xml file in the repository.
+1. Press the Save and Run button.
+
+ISSUES:-have to create agent 
+1 mkdir myagent && cd myagent
+2 tar zxvf vsts-agent-linux-x64-4.254.0.tar.gz
+3 ./config.sh
+Prompt	Example
+Server URL	https://dev.azure.com/my-org
+PAT (Personal Access Token)	Generate one in Azure DevOps
+Agent pool	Default or the one you created
+Agent name	Anything (e.g., my-linux-agent)
+Work folder	Press Enter for default (_work)
+4 ./run.sh
+
+ permissions for agent registration. 
+MY TOKEN:-iv1PDPvINws7E58kQu9GVcXwd0YTvTIdWO018bk4eiimtfkatc7YJQQJ99BDACAAAAAAAAAAAAAGAZDO4AxC
+
+
+
+
+
+
+
+
+program
+
+trigger:
+- main  # Trigger the pipeline when there is a push to the main branch
+
+pool:
+
+  name: Default   # Or your custom pool name
+
+  demands:
+
+    - agent.name -equals MyLinuxAgent
+steps:
+# Step 1: Maven Build and Test Execution
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'  # Ensure your pom.xml is at the repository root
+    goals: 'clean package'  # This will clean, compile, and package your application
+    options: ''  # You can add any additional Maven options if needed, e.g., '-DskipTests'
+
+# Step 2: Publish Unit Test Results
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/target/surefire-reports/TEST-*.xml'  # Path to test result files generated by Maven
+    mergeTestResults: true  # Merge test results if there are multiple result files
+    testRunTitle: 'Maven Unit Test Results'  # Title for the test run
+
+
+for removing
+.sudo snap remove intellij-idea-community
+.rm -rf ~/.IdeaIC*               # For Community Edition
+.rm -rf ~/.cache/JetBrains/Idea*
+.rm -rf ~/.config/JetBrains/Idea*
+.rm -rf ~/.local/share/JetBrains/Idea*
+.rm -rf ~/.local/share/JetBrains/Toolbox
+
